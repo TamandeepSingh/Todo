@@ -1,0 +1,31 @@
+{
+    "allTasks" : {
+        "newTasks" : {
+          "tasks" : [
+            { "id":1, "name":"Learn React" },
+            { "id":2, "name":"Do project"},
+            { "id":3, "name":"play footbal"},
+            { "id":4, "name":"dance"}
+          ],
+          "isShowingTasks": false
+        }, 
+    
+        "activeTask": {
+          "tasks" : [
+            { "id":1, "name":"Learn JS" },
+            { "id":2, "name":"Drive car"},
+            { "id":3, "name":"Do running"}
+          ],
+          "isShowingTasks": false
+        },
+    
+        "completedTask" : {
+          "tasks" : [
+            { "id":1, "name":"set alarm" },
+            { "id":2, "name":"prepare for exam"}
+          ],
+          "isShowingTasks": false
+        }
+        
+      }
+}
