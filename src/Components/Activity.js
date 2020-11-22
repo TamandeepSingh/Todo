@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
-import CheckBox from './CheckBox';
+import CheckBoxes from "./Checkboxes";
 import '../Styles/Activity.css';
 
 class Activity extends Component {
     render(){
         const allTasks = this.props;
-        console.log("props : ", this.props);
             return(
                 <div>
                 <div className="singleCard">
                     <h1>Activities</h1>
                     
-                        <CheckBox taskAgain = {allTasks} ></CheckBox>
+                        <CheckBoxes taskAgain = {allTasks} clickedHere={ (event, index) => this.props.completedTaskprop(event, index)} ></CheckBoxes>
                 </div>
             </div>
             );

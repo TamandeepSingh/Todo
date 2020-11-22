@@ -3,18 +3,14 @@ import '../Styles/Activity.css';
 
 class CheckBox extends Component{
     render(){
-
-        console.log("props in checkbox : ", this.props);
-        return this.props.taskAgain.taskName.map( (p, index) =>{
             return(
                 <div>
-                    <label className="container">{p.name}
-                        <input type="checkbox"  />
+                    <label className="container">{this.props.taskName}
+                        <input  type="checkbox" onChange={this.props.checkedBox} />
                         <span className="checkmark"></span>
                     </label>
                 </div>
             );
-        });
         
     }
 }
