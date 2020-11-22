@@ -10,37 +10,54 @@ class App extends Component {
 
   state = data.allTasks;
 
-  // state = {
-  //   newTasks : {
-  //     tasks : [
-  //       { id:1, name:"Learn React" },
-  //       { id:2, name:"Do project"},
-  //       { id:3, name:"play footbal"},
-  //       { id:4, name:"dance"}
-  //     ],
-  //     isShowingPersons: false
-  //   }, 
-
-  //   activeTask: {
-  //     tasks : [
-  //       { id:1, name:"Learn JS" },
-  //       { id:2, name:"Drive car"},
-  //       { id:3, name:"Do running"}
-  //     ],
-  //     isShowingPersons: false
-  //   },
-
-  //   completedTask : {
-  //     tasks : [
-  //       { id:1, name:"set alarm" },
-  //       { id:2, name:"prepare for exam"},
-  //     ],
-  //     isShowingPersons: false
-  //   }
+  addTask = (event) => {
+    const newTaskClone = {...this.state.newTasks};
+    let lastIdOfArray = newTaskClone.tasks.length;
+    let inp = event.target[0].value;
     
-  // }
+    let newID;
+    if(lastIdOfArray === 0){
+      newID = 0;
+    }else{
+      newID = newTaskClone.tasks[lastIdOfArray-1].key + 1;
+    }
 
-  addTask = () => {
+    let newTaskEntered = {"key":newID, "name":inp, "isChecked":false};
+
+    newTaskClone.tasks.push(newTaskEntered);
+
+    this.setState({
+      newTasks: newTaskClone
+    });
+
+    event.preventDefault();
+  }
+
+  completedTask = (event, index) =>{
+    const newTaskClone = {...this.state.newTasks};
+    let keyOfChecked = newTaskClone.tasks[index].key;
+
+    const completedTaskClone = {...this.state.completedTask};
+    
+    let completedTask = newTaskClone.tasks[index];
+    completedTask.isChecked = true;
+
+    completedTaskClone.tasks.push(completedTask);
+    
+
+    newTaskClone.tasks.splice(index, 1);
+
+    // console.log("after checked one");
+    // console.log("completed task array : ", completedTaskClone);
+    // console.log("new task array : ", newTaskClone);
+
+    setTimeout( () => {
+      this.setState({
+        newTasks: newTaskClone,
+        completedTask: completedTaskClone
+      });
+    }, 1000 );
+    
 
   }
 
@@ -50,9 +67,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header></Header>
-        <AddTask  ></AddTask>
+        <AddTask addTaskProp = {this.addTask} ></AddTask>
         <ShowOptions></ShowOptions>
-        <Activity taskName={this.state.newTasks.tasks} ></Activity>
+        <Activity taskName={this.state.newTasks.tasks} completedTaskprop={this.completedTask} ></Activity>
       </div>
     );
   }
