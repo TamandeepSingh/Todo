@@ -8,4 +8,3 @@ Go to project directory, and run:
 Then open browser and enter url
 
 ### `http://localhost:3000/`
-
