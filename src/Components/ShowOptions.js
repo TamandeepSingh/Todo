@@ -5,7 +5,7 @@ class ShowOptions extends Component{
     render(){
         return(
             <div className="showOptions" >
-                <button>Show all Tasks</button>
+                <button >Show all Tasks</button>
                 <button>Show active Tasks</button>
                 <button>Show completed Tasks</button>
             </div>

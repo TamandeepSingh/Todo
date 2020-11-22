@@ -7,10 +7,9 @@ class AddTask extends Component{
             <div>
                 <div className="singleCard">
                     <h1>What needs to be done</h1>
-                    <form>
+                    <form onSubmit={this.props.addTaskProp} >
                         <input type="text" ></input>
-                        
-                        <button onClick={this.props.addTask} >Add</button>
+                        <button >Add</button>
                     </form>
                     
                 </div>
